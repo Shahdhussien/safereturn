@@ -33,7 +33,7 @@ export const getAllMissimgReports = catchError(async (req,res,next)=>{
 
 //getOneMissingReport
 export const getOneMissingReport = catchError(async (req,res,next)=>{
-    let report = await missingmodel.find({createdBy:req.user._id,_id:req.params.id})
+    let report = await missingmodel.findOne({createdBy:req.user._id,_id:req.params.id})
     !report && next (new AppError('Report not found'))
     report && res.status(201).json({message: 'success',report})
 

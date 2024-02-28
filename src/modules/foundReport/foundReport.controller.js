@@ -30,7 +30,7 @@ export const getAllFoundReports = catchError(async (req,res,next)=>{
 
 //getOneFoundReport
 export const getOneFoundReport = catchError(async (req,res,next)=>{
-    let report = await foundModel.find({createdBy:req.user._id,_id:req.params.id})
+    let report = await foundModel.findOne({createdBy:req.user._id,_id:req.params.id})
     !report && next (new AppError('Report not found'))
     report && res.status(201).json({message: 'success',report})
 
