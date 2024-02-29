@@ -37,7 +37,7 @@ const userSchema=mongoose.Schema({
         default:'user'
     },
     phoneNumber:String,
-    goverenrate:String,
+    governorate:String,
     DOB:Date,
     gender:{
         type:String,
