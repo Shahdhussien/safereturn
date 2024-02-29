@@ -1,5 +1,5 @@
 
-FROM node:17
+FROM node:18
 
 WORKDIR /app
 
