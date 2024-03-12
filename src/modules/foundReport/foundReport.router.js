@@ -7,10 +7,10 @@ import { fileUpload, fileValidation } from '../../utils/cloudmulter.js'
 
 const foundReportRouter=express.Router()
 foundReportRouter.route('/')
-   .post(protectedRouter,fileUpload(fileValidation.image).single('image'),allowedTo('user'),validate(schema.addFoundReportSchema),foundReport.addFoundReport)
+   .post(protectedRouter,fileUpload().single('image'),allowedTo('user'),validate(schema.addFoundReportSchema),foundReport.addFoundReport)
    .get(protectedRouter,allowedTo('user','admin'),foundReport.getAllFoundReports)
 foundReportRouter.route('/:id')
-   .put(protectedRouter,fileUpload(fileValidation.image).single('image'),allowedTo('user'),validate(schema.updateFoundReport),foundReport.updateFoundReport)
+   .put(protectedRouter,fileUpload().single('image'),allowedTo('user'),validate(schema.updateFoundReport),foundReport.updateFoundReport)
    .delete(protectedRouter,allowedTo('user'),validate(schema.deleteFoundReport),foundReport.deleteFoundReport)
    .get(protectedRouter,allowedTo('user','admin'),validate(schema.getOneFoundReport),foundReport.getOneFoundReport)
 
