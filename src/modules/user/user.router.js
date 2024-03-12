@@ -16,12 +16,15 @@ userRouter.route('/')
     .patch(protectedRouter, allowedTo('user'),validate(changeUserPasswordSchema), userController.changeUserPassword)
     .post(protectedRouter,userController.logout);
 
+// userRouter.patch("/profilePic",
+//             protectedRouter,
+//             fileUpload(fileValidation.image).single('image'),
+//             userController.profilePic)
+
 userRouter.patch("/profilePic",
             protectedRouter,
-            fileUpload(fileValidation.image).single('image'),
+            fileUpload().single('image'),
             userController.profilePic)
-
-
 
 export default userRouter
 
