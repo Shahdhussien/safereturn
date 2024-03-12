@@ -6,7 +6,9 @@ const updateUserSchema = Joi.object({
     Lname:Validation.nameValidation.allow('',null).optional(),
     phoneNumber:Validation.phoneNumberValidation.allow('',null).optional(),
     governorate:Validation.governorateValidation.allow('',null).optional(),
-    date:Validation.dateValidation.allow('',null).optional()
+    DOB:Validation.dateValidation.allow('',null).optional(),
+    userName:Joi.string().min(2).max(30).allow('',null).optional(),
+    gender:Joi.string().allow('',null).optional()
 })
 
 

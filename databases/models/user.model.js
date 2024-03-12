@@ -63,12 +63,10 @@ userSchema.pre('save',function(){
 
 userSchema.pre('findOneAndUpdate',function(){
    if( this._update.password)  this._update.password=bcrypt.hashSync(this._update.password , 8);
-   if( this._update.newassword)  this._update.userName= this._update.Fname + " " + this._update.Lname;
 })
 
 userSchema.pre('findByIdAndUpdate',function(){
    if( this._update.password)  this._update.password=bcrypt.hashSync(this._update.password , 8);
-   if( this._update.newassword)  this._update.userName= this._update.Fname + " " + this._update.Lname;
 })
 
 export const userModel=mongoose.model('user',userSchema)
