@@ -6,16 +6,12 @@ import cloudnairy from "../../utils/cloudnairy.js";
 
 //addFoundReport
 export const addFoundReport = catchError(async (req,res,next)=>{
-    // if(!req.file){
-    //     return next(new Error("image is required",{cause:400}))
-    // }
-    if(req.file){
-    const {secure_url,public_id}=await cloudnairy.uploader.upload(req.file.path,{folder:`foundReport/${req.user._id}/image`})
-    req.body.image={secure_url,public_id}
+    if(!req.file){
+        return next(new Error("image is required",{cause:400}))
     }
-    //const {secure_url,public_id}=await cloudnairy.uploader.upload(req.file.path,{folder:`foundReport/${req.user._id}/image`})
+    const {secure_url,public_id}=await cloudnairy.uploader.upload(req.file.path,{folder:`foundReport/${req.user._id}/image`})
     req.body.createdBy=req.user._id
-    // req.body.image={secure_url,public_id}
+    req.body.image={secure_url,public_id}
     const report=await foundModel.insertMany(req.body)
     return res.status(200).json({message:"done",report,file:req.file})
 })
